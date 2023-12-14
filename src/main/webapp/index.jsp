@@ -14,7 +14,17 @@
 
 
 <script>
-
+    function restart() {
+        $.ajax({
+            url: '/restart',
+            type: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            async: false,
+            success: function () {
+                location.reload();
+            }
+        });
+    }
 </script>
 
 <table>
@@ -41,9 +51,11 @@
 
 <c:if test="${winner == CROSSES}">
     <h1>CROSSES WIN!</h1>
+    <button onclick="restart()">Start again</button>
 </c:if>
 <c:if test="${winner == NOUGHTS}">
     <h1>NOUGHTS WIN!</h1>
+    <button onclick="restart()">Start again</button>
 </c:if>
 
 </body>
